@@ -1,0 +1,32 @@
+PREPROCESSING AND DATA ANALYSIS
+
+Labels: 0 = negative/bearish; 1 = positive/bullish.
+Raw TweetEval neutral rows are excluded to align both datasets.
+Cleaning: decode HTML, replace URLs/mentions, normalize whitespace,
+remove empty text and duplicate text/label rows within each split.
+Preserve case, punctuation, emojis, hashtags, tickers and negation.
+Tokenization: whitespace tokens for EDA; use the selected BERT
+tokenizer during training and fit TF-IDF on training text only.
+Mixed training contains only general train + finance train.
+Finance validation and test remain separate for model evaluation.
+
+      dataset      split  rows  label_0  label_1  missing_text  duplicate_text_label  conflicting_label_texts  mean_words  mean_characters
+    TweetEval      train 24933     7092    17841             0                     0                        0       19.46           107.70
+    TweetEval validation  1131      312      819             0                     0                        0       19.64           108.20
+    TweetEval       test  6347     3972     2375             0                     0                        0       15.72            95.06
+StockEmotions      train  8000     3618     4382             0                     0                        0       15.29            78.96
+StockEmotions validation  1000      463      537             0                     0                        0       15.06            77.82
+StockEmotions       test  1000      445      555             0                     0                        0       15.21            78.69
+
+Split overlap audit:
+TweetEval: train/validation shared texts = 0
+TweetEval: train/test shared texts = 0
+TweetEval: validation/test shared texts = 0
+StockEmotions: train/validation shared texts = 0
+StockEmotions: train/test shared texts = 0
+StockEmotions: validation/test shared texts = 0
+Mixed train/finance validation shared texts = 0
+Mixed train/finance test shared texts = 0
+Review nonzero overlaps before training to avoid data leakage.
+Class imbalance and domain-specific sentiment meanings should be
+considered in the report; labels may not reflect every interpretation.

@@ -1,0 +1,7 @@
+dataset,split,rows,label_0,label_1,missing_text,duplicate_text_label,conflicting_label_texts,mean_words,mean_characters
+TweetEval,train,24933,7092,17841,0,0,0,19.46,107.7
+TweetEval,validation,1131,312,819,0,0,0,19.64,108.2
+TweetEval,test,6347,3972,2375,0,0,0,15.72,95.06
+StockEmotions,train,8000,3618,4382,0,0,0,15.29,78.96
+StockEmotions,validation,1000,463,537,0,0,0,15.06,77.82
+StockEmotions,test,1000,445,555,0,0,0,15.21,78.69
