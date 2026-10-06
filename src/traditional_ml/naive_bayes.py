@@ -50,7 +50,7 @@ def nb_function(train_dataset, test_dataset, model_variant):
         f.write(f"Precision: {models_precision_score}\n")
         f.write(f"Recall: {models_recall_score}\n")
         f.write(f"F1-score: {models_f1_score}\n")
-        f.write(f"Confusion matrix data: {models_confusion_matrix.tolist()}\n\n\n")
+        f.write(f"Confusion matrix data: {models_confusion_matrix.tolist()}\n\n")
     
     print(f"Naive bayes evaluation complete for Model {model_variant}.")
 
