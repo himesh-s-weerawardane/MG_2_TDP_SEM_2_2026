@@ -1,0 +1,63 @@
+Logisitic Regression Data for model A
+Accuracy: 0.567
+Precision: 0.5772151898734177
+Recall: 0.8216216216216217
+F1-score: 0.6780669144981413
+Confusion matrix data: [[111, 334], [99, 456]]
+
+Naive Bayes Data for model A
+Accuracy: 0.564
+Precision: 0.561025641025641
+Recall: 0.9855855855855856
+F1-score: 0.7150326797385621
+Confusion matrix data: [[17, 428], [8, 547]]
+
+SVM Data for model A
+Accuracy: 0.565
+Precision: 0.5898203592814372
+Recall: 0.7099099099099099
+F1-score: 0.6443172526573998
+Confusion matrix data: [[171, 274], [161, 394]]
+
+Logisitic Regression Data for model B
+Accuracy: 0.719
+Precision: 0.7245901639344262
+Recall: 0.7963963963963964
+F1-score: 0.7587982832618025
+Confusion matrix data: [[277, 168], [113, 442]]
+
+Naive Bayes Data for model B
+Accuracy: 0.679
+Precision: 0.6625
+Recall: 0.8594594594594595
+F1-score: 0.7482352941176471
+Confusion matrix data: [[202, 243], [78, 477]]
+
+SVM Data for model B
+Accuracy: 0.706
+Precision: 0.7253886010362695
+Recall: 0.7567567567567568
+F1-score: 0.7407407407407407
+Confusion matrix data: [[286, 159], [135, 420]]
+
+Logisitic Regression Data for model C
+Accuracy: 0.707
+Precision: 0.7147540983606557
+Recall: 0.7855855855855856
+F1-score: 0.7484978540772532
+Confusion matrix data: [[271, 174], [119, 436]]
+
+Naive Bayes Data for model C
+Accuracy: 0.639
+Precision: 0.6117511520737328
+Recall: 0.9567567567567568
+F1-score: 0.7463106113843991
+Confusion matrix data: [[108, 337], [24, 531]]
+
+SVM Data for model C
+Accuracy: 0.698
+Precision: 0.7177280550774526
+Recall: 0.7513513513513513
+F1-score: 0.7341549295774648
+Confusion matrix data: [[281, 164], [138, 417]]
+
