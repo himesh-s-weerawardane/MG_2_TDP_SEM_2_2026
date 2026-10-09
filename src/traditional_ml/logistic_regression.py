@@ -5,9 +5,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from sklearn.metrics import ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
+import pickle
 
 def lr_function(train_dataset, test_dataset, model_variant):
-    # Extracting data
+    # Read in training and test datasets
     train = panda.read_csv(train_dataset)
     test = panda.read_csv(test_dataset)
 
@@ -22,6 +23,12 @@ def lr_function(train_dataset, test_dataset, model_variant):
     model = LogisticRegression()
     model.fit(x_train, y_train)
     y_pred = model.predict(x_test)
+
+    # Save the model and vectorizer for frontend.
+    with open(f"pkls/vectorizer/lr_vectorizer_{model_variant}.pkl", "wb") as f:
+        pickle.dump(vectorizer, f)
+    with open(f"pkls/models/lr_{model_variant}.pkl", "wb") as f:
+        pickle.dump(model, f)
 
     # Evaluate the model
     models_accuracy_score = accuracy_score(y_test, y_pred)
