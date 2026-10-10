@@ -22,11 +22,10 @@ if (user_selection == "Logistic Regression"):
     with open("pkls/vectorizer/lr_vectorizer_C.pkl", "rb") as f:
         vectorizer = pickle.load(f)
 elif (user_selection == "SVM"):
-    st.write(f">NOTE: The code needs to be adjusted to handle the proba function.")
-    # with open("pkls/models/svm_C.pkl", "rb") as f:
-    #     model = pickle.load(f)
-    # with open("pkls/vectorizer/svm_vectorizer_C.pkl", "rb") as f:
-    #     vectorizer = pickle.load(f)
+    with open("pkls/models/svm_C.pkl", "rb") as f:
+        model = pickle.load(f)
+    with open("pkls/vectorizer/svm_vectorizer_C.pkl", "rb") as f:
+        vectorizer = pickle.load(f)
 elif (user_selection == "Naive Bayes (Multinomial)"):
     with open("pkls/models/nb_C.pkl", "rb") as f:
         model = pickle.load(f)
@@ -44,12 +43,16 @@ elif (user_selection == "BERT (untrained)"):
 # Predict model the sentimetn.
 if st.button("Predict Sentiment"):
     vectorized = vectorizer.transform([users_prompt])
-    probability = model.predict_proba(vectorized)[0][1]
     prediction = model.predict(vectorized)[0]
-    print("Mode rpedict", prediction, " model probability", probability)
 
     st.subheader("Prediction Result")
-    st.write(f"Probability: **{probability:.2%}**")
+    if (user_selection != "SVM"): 
+        probability = model.predict_proba(vectorized)[0][1]   
+        st.write(f"Probability: **{probability:.2%}**")
+    else:
+        probability = "NOT APPLICABLE"
+    # print("Mode rpedict", prediction, " model probability", probability)
+
     if (prediction == 1):
         st.success("Model predicts that this is POSITIVE (BULLISH)")
     else:

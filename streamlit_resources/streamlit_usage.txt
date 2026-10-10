@@ -107,3 +107,28 @@ Prediction: 1
 Probability: 0.6930670724238791
 Model: Logistic Regression
 
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: sel sell sell
+Prediction: 0
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: wELCOMING MSFT to the NYSE
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: Goodbye from MSFT to the NYSE
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: Goodbye from MSFT from the NYSE
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
