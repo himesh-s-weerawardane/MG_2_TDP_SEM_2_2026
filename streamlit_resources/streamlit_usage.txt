@@ -1,0 +1,179 @@
+Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.6930670724238791
+Prompt: Happy new year
+Prediction: 1
+Probability: 0.9935417052020626
+Prompt: Drop in stock price
+Prediction: 0
+Probability: 0.3311891987212322
+Prompt: 5x Share split
+Prediction: 1
+Probability: 0.6852560098293348
+Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.6930670724238791
+
+Prompt: I wish there was more to MSFT's Q4 earnings
+Prediction: 1
+Probability: 0.8182181578440427
+
+
+Prompt: APPL down 15% and APPL up 15%
+Prediction: 1
+Probability: 0.5563736913644554
+
+
+Prompt: APPL down 15% or APPL up 15%
+Prediction: 1
+Probability: 0.5303564160952736
+
+
+Prompt: APPL was down 15% now APPL up 15%
+Prediction: 0
+Probability: 0.45577598985379647
+
+
+Prompt: APPL was up 15% now APPL down 15%
+Prediction: 0
+Probability: 0.45577598985379647
+
+
+Prompt: APPL was up 15% now APPL down 15%
+Prediction: 0
+Probability: 0.45577598985379647
+
+
+Prompt: APPL down 15% now APPL is up 15%
+Prediction: 0
+Probability: 0.47318810196153793
+
+
+Prompt: APPL down 15% now APPL is up 16%
+Prediction: 0
+Probability: 0.4875814455423592
+
+
+Prompt: APPL down 15% now APPL is up 20%
+Prediction: 0
+Probability: 0.4966616353750809
+
+> Prompt: Decor sales plummet by 400%
+Prediction: 1
+Probability: 0.5607151632389064
+
+> Prompt: Decor sales skyrocket by 400%
+Prediction: 1
+Probability: 0.6366387974739248
+
+> Prompt: Decor sales fall by 400%
+Prediction: 0
+Probability: 0.49336482878000093
+
+> Prompt: Decor sales collapse by 400%
+Prediction: 0
+Probability: 0.49157334235019895
+
+> Prompt: Decor sales close to 400%
+Prediction: 1
+Probability: 0.6640060221777692
+
+> Prompt: Cadbury talks to new supplier
+Prediction: 1
+Probability: 0.6973649675297022
+
+> Prompt: Sell all NVDIA STOCK NOWQ
+Prediction: 1
+Probability: 0.5517409163566834
+
+-- Above is just for logisitic regression.
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.6930670724238791
+Model: Logistic Regression
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.8374944750598505
+Model: Naive Bayes (Multinomial)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.8374944750598505
+Model: Naive Bayes (Multinomial)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.6930670724238791
+Model: Logistic Regression
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: sel sell sell
+Prediction: 0
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: wELCOMING MSFT to the NYSE
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: Goodbye from MSFT to the NYSE
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: Goodbye from MSFT from the NYSE
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.6930670724238791
+Model: Logistic Regression
+
+> Prompt: MSFT at an all time high
+Prediction: 1
+Probability: 0.7761095932242136
+Model: Logistic Regression
+
+> Prompt: MSFT at an all time high
+Prediction: 1
+Probability: 0.7990147073029402
+Model: Naive Bayes (Multinomial)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.6930670724238791
+Model: Logistic Regression
+
+> Prompt: MSFT at all time low
+Prediction: 1
+Probability: 0.7814149502130567
+Model: Logistic Regression
+
+> Prompt: MSFT at all time low
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.6930670724238791
+Model: Logistic Regression
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.7928816947896177
+Model: Naive Bayes (Multinomial)
+

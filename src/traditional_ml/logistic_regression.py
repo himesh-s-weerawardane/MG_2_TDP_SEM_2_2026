@@ -5,9 +5,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from sklearn.metrics import ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
+import pickle
 
 def lr_function(train_dataset, test_dataset, model_variant):
-    # Extracting data
+    # Read in training and test datasets
     train = panda.read_csv(train_dataset)
     test = panda.read_csv(test_dataset)
 
@@ -19,9 +20,41 @@ def lr_function(train_dataset, test_dataset, model_variant):
     y_test = test["label"]
 
     # Logistic regression modelling
-    model = LogisticRegression()
+    model = LogisticRegression(C=1.0, l1_ratio=0.0, max_iter=10000)
     model.fit(x_train, y_train)
     y_pred = model.predict(x_test)
+
+    # # Fine tuning
+    # import numpy as np
+    # from sklearn.model_selection import GridSearchCV
+    
+    # c_values = np.logspace(-3, 3, 7)
+    # param_grid = [
+    #     {'solver': ['lbfgs'], 'l1_ratio': [0], 'C': c_values},
+    #     {'solver': ['liblinear'], 'l1_ratio': [0, 1], 'C': c_values},
+    # ]
+
+    # clf = GridSearchCV(
+    #     LogisticRegression(max_iter=10000),
+    #     param_grid=param_grid,
+    #     cv=3,
+    #     scoring='accuracy',
+    #     n_jobs=-1,
+    # )
+    # clf.fit(x_train, y_train)
+
+    # model = clf.best_estimator_
+    # y_pred = model.predict(x_test)
+    # with open("fine_tuning.txt", "a") as f:
+    #     f.write(f"Logistic Regression Data for model {model_variant}\n")
+    #     f.write(f"best params: {clf.best_params_}\n")
+    #     f.write(f"best score: {clf.best_score_}\n\n")
+
+    # Save the model and vectorizer for frontend.
+    with open(f"pkls/vectorizer/lr_vectorizer_{model_variant}.pkl", "wb") as f:
+        pickle.dump(vectorizer, f)
+    with open(f"pkls/models/lr_{model_variant}.pkl", "wb") as f:
+        pickle.dump(model, f)
 
     # Evaluate the model
     models_accuracy_score = accuracy_score(y_test, y_pred)
