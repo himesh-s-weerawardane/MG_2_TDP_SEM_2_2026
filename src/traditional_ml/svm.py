@@ -20,34 +20,34 @@ def svm_function(train_dataset, test_dataset, model_variant):
     y_test = test["label"]
 
     # SVM modelling
-    # model = svm.LinearSVC()
-    # model.fit(x_train, y_train)
-    # y_pred = model.predict(x_test)
-
-    # Fine tuning
-    import numpy as np
-    from sklearn.model_selection import GridSearchCV
-
-    param_grid = {
-        'C': np.logspace(-2, 2, 9),   # 0.01 to 100
-        'loss': ['hinge', 'squared_hinge'],
-    }
-
-    clf = GridSearchCV(
-        svm.LinearSVC(max_iter=15000),
-        param_grid=param_grid,
-        cv=3,
-        scoring='accuracy',
-        n_jobs=-1,
-    )
-    clf.fit(x_train, y_train)
-
-    model = clf.best_estimator_
+    model = svm.LinearSVC(C=1.0, loss='hinge', max_iter=5000)
+    model.fit(x_train, y_train)
     y_pred = model.predict(x_test)
-    with open("fine_tuning.txt", "a") as f:
-        f.write(f"SVM Data for model {model_variant}\n")
-        f.write(f"best params: {clf.best_params_}\n")
-        f.write(f"best score: {clf.best_score_}\n\n")
+
+    # # Fine tuning
+    # import numpy as np
+    # from sklearn.model_selection import GridSearchCV
+
+    # param_grid = {
+    #     'C': np.logspace(-2, 2, 9),   # 0.01 to 100
+    #     'loss': ['hinge', 'squared_hinge'],
+    # }
+
+    # clf = GridSearchCV(
+    #     svm.LinearSVC(max_iter=15000),
+    #     param_grid=param_grid,
+    #     cv=3,
+    #     scoring='accuracy',
+    #     n_jobs=-1,
+    # )
+    # clf.fit(x_train, y_train)
+
+    # model = clf.best_estimator_
+    # y_pred = model.predict(x_test)
+    # with open("fine_tuning.txt", "a") as f:
+    #     f.write(f"SVM Data for model {model_variant}\n")
+    #     f.write(f"best params: {clf.best_params_}\n")
+    #     f.write(f"best score: {clf.best_score_}\n\n")
 
     # Save the model and vectorizer for frontend.
     with open(f"pkls/vectorizer/svm_vectorizer_{model_variant}.pkl", "wb") as f:
