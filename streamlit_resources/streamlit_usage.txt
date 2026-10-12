@@ -147,3 +147,33 @@ Prediction: 1
 Probability: 0.7990147073029402
 Model: Naive Bayes (Multinomial)
 
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.6930670724238791
+Model: Logistic Regression
+
+> Prompt: MSFT at all time low
+Prediction: 1
+Probability: 0.7814149502130567
+Model: Logistic Regression
+
+> Prompt: MSFT at all time low
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.6930670724238791
+Model: Logistic Regression
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: NOT APPLICABLE
+Model: SVM
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.7928816947896177
+Model: Naive Bayes (Multinomial)
+

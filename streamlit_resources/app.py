@@ -21,16 +21,19 @@ if (user_selection == "Logistic Regression"):
         model = pickle.load(f)   
     with open("pkls/vectorizer/lr_vectorizer_C.pkl", "rb") as f:
         vectorizer = pickle.load(f)
+    accuracy = 0.707
 elif (user_selection == "SVM"):
     with open("pkls/models/svm_C.pkl", "rb") as f:
         model = pickle.load(f)
     with open("pkls/vectorizer/svm_vectorizer_C.pkl", "rb") as f:
         vectorizer = pickle.load(f)
+    accuracy = 0.709
 elif (user_selection == "Naive Bayes (Multinomial)"):
     with open("pkls/models/nb_C.pkl", "rb") as f:
         model = pickle.load(f)
     with open("pkls/vectorizer/nb_vectorizer_C.pkl", "rb") as f:
         vectorizer = pickle.load(f)
+    accuracy = 0.637
 elif (user_selection == "BERT (trained)"):
     st.write(f">NOTE: Awaiting implementation")
 #     with open("bert_t.pkl", "rb") as f:
@@ -52,6 +55,7 @@ if st.button("Predict Sentiment"):
     else:
         probability = "NOT APPLICABLE"
     # print("Mode rpedict", prediction, " model probability", probability)
+    st.write(f"Accuracy: **{accuracy:.2%}** (from Model C during testing)")
 
     if (prediction == 1):
         st.success("Model predicts that this is POSITIVE (BULLISH)")
@@ -63,4 +67,5 @@ if st.button("Predict Sentiment"):
         f.write(f"> Prompt: {users_prompt}\n")
         f.write(f"Prediction: {prediction}\n")
         f.write(f"Probability: {probability}\n")
+        f.write(f"Accuracy: {accuracy}\n")
         f.write(f"Model: {user_selection}\n\n")
