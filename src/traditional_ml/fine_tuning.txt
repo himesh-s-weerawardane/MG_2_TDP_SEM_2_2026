@@ -1,0 +1,36 @@
+Logistic Regression Data for model A
+best params: {'C': np.float64(10.0), 'l1_ratio': 0, 'solver': 'lbfgs'}
+best score: 0.8515621866602494
+
+Naive Bayes Data for model A
+best params: {'alpha': np.float64(0.1), 'fit_prior': True}
+best score: 0.8213211406569606
+
+SVM Data for model A
+best params: {'C': np.float64(1.0), 'loss': 'hinge'}
+best score: 0.8503990695062768
+
+Logistic Regression Data for model B
+best params: {'C': np.float64(1.0), 'l1_ratio': 0, 'solver': 'lbfgs'}
+best score: 0.6851228180123395
+
+Naive Bayes Data for model B
+best params: {'alpha': np.float64(1.0), 'fit_prior': False}
+best score: 0.6713750991178616
+
+SVM Data for model B
+best params: {'C': np.float64(0.31622776601683794), 'loss': 'squared_hinge'}
+best score: 0.6826233648775899
+
+Logistic Regression Data for model C
+best params: {'C': np.float64(10.0), 'l1_ratio': 0, 'solver': 'lbfgs'}
+best score: 0.7567755258142865
+
+Naive Bayes Data for model C
+best params: {'alpha': np.float64(0.1), 'fit_prior': True}
+best score: 0.7404400066721156
+
+SVM Data for model C
+best params: {'C': np.float64(1.0), 'loss': 'hinge'}
+best score: 0.7606320024359162
+

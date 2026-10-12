@@ -132,3 +132,18 @@ Prediction: 1
 Probability: NOT APPLICABLE
 Model: SVM
 
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.6930670724238791
+Model: Logistic Regression
+
+> Prompt: MSFT at an all time high
+Prediction: 1
+Probability: 0.7761095932242136
+Model: Logistic Regression
+
+> Prompt: MSFT at an all time high
+Prediction: 1
+Probability: 0.7990147073029402
+Model: Naive Bayes (Multinomial)
+
