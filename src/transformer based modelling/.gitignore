@@ -1,9 +1,9 @@
-.venv/, 
-__pycache__/, 
-.DS_Store, 
-.ipynb_checkpoints/, 
-models/, 
-checkpoints/, 
-checkpoint-*/, 
-*.safetensors, 
+.venv/
+__pycache__/
+.DS_Store
+.ipynb_checkpoints/
+models/
+checkpoints/
+checkpoint-*/
+*.safetensors
 *.bin and *.pt
