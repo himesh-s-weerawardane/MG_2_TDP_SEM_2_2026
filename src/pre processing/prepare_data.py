@@ -29,11 +29,13 @@ def clean_text(value):
 def prepare_frame(frame, domain, split):
     frame = frame.copy()
     before = len(frame)
+    missing = int(frame["text"].isna().sum())
     frame["text"] = frame["text"].apply(clean_text)
     empty = int((frame["text"] == "").sum())
     frame = frame[frame["text"] != ""].copy()
     duplicates = int(frame.duplicated(["text", "label"]).sum())
     frame = frame.drop_duplicates(["text", "label"]).reset_index(drop=True)
+    conflicting = int((frame.groupby("text")["label"].nunique() > 1).sum())
 
     if not frame["label"].isin([0, 1]).all():
         raise ValueError(f"Invalid labels in {domain} {split}.")
@@ -46,14 +48,23 @@ def prepare_frame(frame, domain, split):
     frame["word_count"] = frame["tokens"].apply(len)
     frame["character_count"] = frame["text"].str.len()
 
+    stats = {
+        "rows_before_cleaning": before,
+        "missing_text": missing,
+        "empty_after_cleaning": empty,
+        "duplicates_removed": duplicates,
+        "rows_after_cleaning": len(frame),
+        "conflicting_label_texts": conflicting,
+    }
+
     print(f"\n{domain.upper()} - {split}")
     print(f"Rows before cleaning: {before}")
-    print(f"Empty texts removed: {empty}; duplicates removed: {duplicates}")
+    print(f"Missing texts: {missing}; empty after cleaning: {empty}; duplicates removed: {duplicates}")
     print(f"Rows after cleaning: {len(frame)}")
     print(f"0 (negative/bearish): {(frame['label'] == 0).sum()}")
     print(f"1 (positive/bullish): {(frame['label'] == 1).sum()}")
     print(f"Average word count: {frame['word_count'].mean():.1f}")
-    return frame
+    return frame, stats
 
 
 def save_csv(frame, filename):
@@ -63,23 +74,20 @@ def save_csv(frame, filename):
     print(f"Saved: {OUTPUT_DIR / filename}")
 
 
-def create_eda(source, target, mixed):
+def create_eda(source, target, mixed, cleaning_stats):
     statistics = []
     overlaps = []
     for name, frames in [("TweetEval", source), ("StockEmotions", target)]:
         for split, frame in frames.items():
-            statistics.append({
-                "dataset": name,
-                "split": split,
-                "rows": len(frame),
+            row = {"dataset": name, "split": split}
+            row.update(cleaning_stats[(name, split)])
+            row.update({
                 "label_0": int((frame["label"] == 0).sum()),
                 "label_1": int((frame["label"] == 1).sum()),
-                "missing_text": int(frame["text"].isna().sum()),
-                "duplicate_text_label": int(frame.duplicated(["text", "label"]).sum()),
-                "conflicting_label_texts": int((frame.groupby("text")["label"].nunique() > 1).sum()),
                 "mean_words": round(float(frame["word_count"].mean()), 2) if len(frame) else 0,
                 "mean_characters": round(float(frame["character_count"].mean()), 2) if len(frame) else 0,
             })
+            statistics.append(row)
         # Audit the supplied splits without silently changing their membership.
         for first, second in [("train", "validation"), ("train", "test"), ("validation", "test")]:
             count = len(set(frames[first]["text"]) & set(frames[second]["text"]))
@@ -139,12 +147,13 @@ def create_eda(source, target, mixed):
 
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
     print("Starting preprocessing: 0 = negative/bearish; 1 = positive/bullish")
     tweet_eval = load_from_disk(str(TWEET_EVAL_PATH))
     training_frames = []
     source = {}
     target = {}
-    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    cleaning_stats = {}
 
     for split, stock_file in zip(SPLITS, STOCK_FILES):
         general = tweet_eval[split].to_pandas()[["text", "label"]].copy()
@@ -162,10 +171,12 @@ def main():
             "emotion": raw["emo_label"],
         })
 
-        general = prepare_frame(general, "general", split)
-        finance = prepare_frame(finance, "finance", split)
+        general, general_stats = prepare_frame(general, "general", split)
+        finance, finance_stats = prepare_frame(finance, "finance", split)
         source[split] = general
         target[split] = finance
+        cleaning_stats[("TweetEval", split)] = general_stats
+        cleaning_stats[("StockEmotions", split)] = finance_stats
         save_csv(general, f"tweet_eval_{split}.csv")
         save_csv(finance, f"stock_emotions_{split}.csv")
         if split == "train":
@@ -175,7 +186,7 @@ def main():
     save_csv(mixed, "mixed_train.csv")
     print(f"\nMixed train: {len(mixed)} rows")
     print(mixed.groupby(["domain", "label"]).size().to_string())
-    create_eda(source, target, mixed)
+    create_eda(source, target, mixed, cleaning_stats)
     print("\nPreprocessing completed successfully.")
 
 

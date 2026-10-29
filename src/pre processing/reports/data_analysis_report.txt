@@ -10,13 +10,13 @@ tokenizer during training and fit TF-IDF on training text only.
 Mixed training contains only general train + finance train.
 Finance validation and test remain separate for model evaluation.
 
-      dataset      split  rows  label_0  label_1  missing_text  duplicate_text_label  conflicting_label_texts  mean_words  mean_characters
-    TweetEval      train 24933     7092    17841             0                     0                        0       19.46           107.70
-    TweetEval validation  1131      312      819             0                     0                        0       19.64           108.20
-    TweetEval       test  6347     3972     2375             0                     0                        0       15.72            95.06
-StockEmotions      train  8000     3618     4382             0                     0                        0       15.29            78.96
-StockEmotions validation  1000      463      537             0                     0                        0       15.06            77.82
-StockEmotions       test  1000      445      555             0                     0                        0       15.21            78.69
+      dataset      split  rows_before_cleaning  missing_text  empty_after_cleaning  duplicates_removed  rows_after_cleaning  conflicting_label_texts  label_0  label_1  mean_words  mean_characters
+    TweetEval      train                 24942             0                     0                   9                24933                        0     7092    17841       19.46           107.70
+    TweetEval validation                  1131             0                     0                   0                 1131                        0      312      819       19.64           108.20
+    TweetEval       test                  6347             0                     0                   0                 6347                        0     3972     2375       15.72            95.06
+StockEmotions      train                  8000             0                     0                   0                 8000                        0     3618     4382       15.29            78.96
+StockEmotions validation                  1000             0                     0                   0                 1000                        0      463      537       15.06            77.82
+StockEmotions       test                  1000             0                     0                   0                 1000                        0      445      555       15.21            78.69
 
 Split overlap audit:
 TweetEval: train/validation shared texts = 0
