@@ -177,3 +177,297 @@ Prediction: 1
 Probability: 0.7928816947896177
 Model: Naive Bayes (Multinomial)
 
+> Prompt: Apple shares drop by a lot
+Prediction: 0
+Probability: 0.06899859756231308
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: Apple shares drop by a lot
+Prediction: 0
+Probability: 0.06899859756231308
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company loss record profits...
+Prediction: 0
+Probability: 0.0019789962098002434
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: No idea what the fed will do tomorrow, scared to hold overnight
+Prediction: 0
+Probability: 0.004460589028894901
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record loss...
+Prediction: 0
+Probability: 0.0012327861040830612
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: 0.0033375639468431473
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: 0.0033375639468431473
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 1
+Probability: 0.6583105490924552
+Accuracy: 0.637
+Model: Naive Bayes (Multinomial)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: 0.0033375639468431473
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 1
+Probability: 0.6583105490924552
+Accuracy: 0.637
+Model: Naive Bayes (Multinomial)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: 0.0033375639468431473
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 1
+Probability: 0.6583105490924552
+Accuracy: 0.637
+Model: Naive Bayes (Multinomial)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: 0.0033375639468431473
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: 0.0033375639468431473
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 1
+Probability: 0.6583105490924552
+Accuracy: 0.637
+Model: Naive Bayes (Multinomial)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: 0.0033375639468431473
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: 0.0033375639468431473
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 1
+Probability: 0.6583105490924552
+Accuracy: 0.637
+Model: Naive Bayes (Multinomial)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: 0.0033375639468431473
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 1
+Probability: 0.6583105490924552
+Accuracy: 0.637
+Model: Naive Bayes (Multinomial)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: 0.0033375639468431473
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 1
+Probability: 0.588939577401887
+Accuracy: 0.707
+Model: Logistic Regression
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: NOT APPLICABLE
+Accuracy: 0.709
+Model: SVM
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 1
+Probability: 0.6583105490924552
+Accuracy: 0.637
+Model: Naive Bayes (Multinomial)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits but is scared about upcoming losses
+Prediction: 0
+Probability: 0.0033375639468431473
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record losses...
+Prediction: 0
+Probability: 0.0013805979397147894
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profit but fears future loses...
+Prediction: 0
+Probability: 0.023933958262205124
+Accuracy: 0.775
+Model: BERT (trained)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 0
+Probability: 0.2618286609649658
+Accuracy: 0.786
+Model: BERT - Strategy 1 (finance only)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9249985218048096
+Accuracy: 0.782
+Model: BERT - Strategy 2 (general then finance)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT - Strategy 3 (mixed)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9249985218048096
+Accuracy: 0.782
+Model: BERT - Strategy 2 (general then finance)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT - Strategy 3 (mixed)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 0
+Probability: 0.2618286609649658
+Accuracy: 0.786
+Model: BERT - Strategy 1 (finance only)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9249985218048096
+Accuracy: 0.782
+Model: BERT - Strategy 2 (general then finance)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT - Strategy 3 (mixed)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 0
+Probability: 0.2618286609649658
+Accuracy: 0.786
+Model: BERT - Strategy 1 (finance only)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9249985218048096
+Accuracy: 0.782
+Model: BERT - Strategy 2 (general then finance)
+
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.9924553632736206
+Accuracy: 0.775
+Model: BERT - Strategy 3 (mixed)
+
