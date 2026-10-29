@@ -8,42 +8,53 @@ import pandas as pd
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
-# BERT (Section 3, Strategy 3 - mixed training) published on the Hugging Face Hub.
-# Downloaded automatically on first use and cached locally.
-BERT_MODEL_ID = "sandinator/bert-stockemotions-mixed-s3"
-# Second BERT with 12 outputs: the StockEmotions emotion labels (finance data only). Demo extra.
+# BERT models (from seed 42) published on the Hugging Face
+BERT_STRATEGIES = {
+    "BERT - Strategy 1 (finance only)": {
+        "repo": "sandinator/bert-stockemotions-domain-s1",
+        "description": "bert-base-uncased fine-tuned on StockEmotions only (8,000 finance posts)",
+        "accuracy": 0.786, "macro_f1": 0.784},
+    "BERT - Strategy 2 (general then finance)": {
+        "repo": "sandinator/bert-stockemotions-sequential-s2",
+        "description": "fine-tuned on TweetEval first, then continued on StockEmotions (sequential transfer)",
+        "accuracy": 0.782, "macro_f1": 0.781},
+    "BERT - Strategy 3 (mixed)": {
+        "repo": "sandinator/bert-stockemotions-mixed-s3",
+        "description": "fine-tuned once on TweetEval + StockEmotions combined (32,933 posts)",
+        "accuracy": 0.775, "macro_f1": 0.774},
+}
+
+# (Extra Enhancement) Second BERT Emotion Model with 12 outputs published on the Hugging Face
 EMOTION_MODEL_ID = "sandinator/bert-stockemotions-emotion"
 
-# Section 3 results folder (bert_results.csv + images), relative to this file.
+# Results folder (bert_results.csv + images), relative to this file.
 BERT_RESULTS_DIR = os.path.join(os.path.dirname(__file__), "..", "src", "transformer based modelling", "results")
 
-# Same text preparation that BERT was trained with (see src/transformer based modelling/bert_strategies.ipynb).
-# This function is used to prepare the text for BERT prediction, including fixing literal escape codes and converting emojis to words.
+# Function: To prepare the text for BERT prediction including fixing literal escape codes and converting emojis to words.
 def prepare_text(text):
     text = str(text)
     text = re.sub(r"\\u([0-9a-fA-F]{4})", lambda m: chr(int(m.group(1), 16)), text)
     text = emoji.demojize(text, delimiters=(" ", " ")).replace("_", " ")
     return re.sub(r"\s+", " ", text).strip()
 
-# The below function loads BERT once and keep it in memory for every later prediction.
+# Function: To load one BERT model once (per Hub name) and keeps it in memory for later predictions.
 @st.cache_resource
-def load_bert():
-    tokenizer = AutoTokenizer.from_pretrained(BERT_MODEL_ID)
-    model = AutoModelForSequenceClassification.from_pretrained(BERT_MODEL_ID)
+def load_bert(repo_id):
+    tokenizer = AutoTokenizer.from_pretrained(repo_id)
+    model = AutoModelForSequenceClassification.from_pretrained(repo_id)
     model.eval()
     return tokenizer, model
 
-# The below function predicts the sentiment of a given text using the loaded BERT model.
-# This will return (predicted label 0/1, probability of bullish).
-def bert_predict(text):
-    tokenizer, model = load_bert()
+# Function: Predicts the sentiment of a given text using the chosen BERT model.
+def bert_predict(text, repo_id):
+    tokenizer, model = load_bert(repo_id)
     inputs = tokenizer(prepare_text(text), return_tensors="pt", truncation=True, max_length=128)
     with torch.no_grad():
         logits = model(**inputs).logits
     probabilities = torch.softmax(logits, dim=-1)[0]
     return int(probabilities.argmax()), float(probabilities[1])
 
-# Loads the emotion model once (same pattern as load_bert).
+# Function: Loads the emotion model once.
 @st.cache_resource
 def load_emotion_model():
     tokenizer = AutoTokenizer.from_pretrained(EMOTION_MODEL_ID)
@@ -51,7 +62,7 @@ def load_emotion_model():
     model.eval()
     return tokenizer, model
 
-# Returns (emotion name, its probability, all 12 probabilities), e.g. ("optimism", 0.61, {...}).
+# Function: To predict the emotion of a given text using the loaded emotion model.
 def emotion_predict(text):
     tokenizer, model = load_emotion_model()
     inputs = tokenizer(prepare_text(text), return_tensors="pt", truncation=True, max_length=128)
@@ -63,20 +74,21 @@ def emotion_predict(text):
     return best, all_probabilities[best], all_probabilities
 
 
-# Page title and prompt bar
+# Page Title and Prompt Bar
 st.title("Domain-Adaptive Sentiment & Public Opinion Analysis Demo")
 st.write("Enter a prompt to predict its sentiment.")
 
-# Collect inputs
-# Accept user prompt
+# User Input Collection
 users_prompt = st.text_input("Please enter your Prompt", "e.g. Arizone Ice Tea Company share record profits...")
 st.text(users_prompt)
-# Select model option
+
+# Model Selection
 st.write("Logistic Regression, SVM and Naive Bayes are traidtional Machine Learnign Models. BERT is a transformer model.")
-user_selection = st.radio("Choose your model", ["Logistic Regression", "SVM", "Naive Bayes (Multinomial)", "BERT (trained)", "BERT (untrained)"])
+user_selection = st.radio("Choose your model",
+                          ["Logistic Regression", "SVM", "Naive Bayes (Multinomial)"] + list(BERT_STRATEGIES) + ["BERT (untrained)"])
 st.write(user_selection)
 
-# Identify the the model
+# Match the User Selection
 if (user_selection == "Logistic Regression"):
     with open("pkls/models/lr_C.pkl", "rb") as f:
         model = pickle.load(f)
@@ -95,33 +107,40 @@ elif (user_selection == "Naive Bayes (Multinomial)"):
     with open("pkls/vectorizer/nb_vectorizer_C.pkl", "rb") as f:
         vectorizer = pickle.load(f)
     accuracy = 0.637
-elif (user_selection == "BERT (trained)"):
-    # bert-base-uncased fine-tuned on TweetEval + StockEmotions combined (Strategy 3 / Model C, seed 42).
-    st.write("Sentiment: BERT fine-tuned on general + finance tweets (Strategy 3, mixed) - test accuracy 77.5%, macro-F1 0.774.")
-    st.write("Emotion: a separate 12-class BERT trained on StockEmotions emotion labels - test accuracy 41.8% (demo extra).")
-    accuracy = 0.775
-    macro_f1 = 0.774
+elif user_selection in BERT_STRATEGIES:
+    bert_info = BERT_STRATEGIES[user_selection]
+    accuracy = bert_info["accuracy"]
+    macro_f1 = bert_info["macro_f1"]
+    # Info Cards
+    left, right = st.columns(2)
+    with left:
+        st.info(f"**Sentiment model** ({user_selection.replace('BERT - ', '')})\n\n"
+                f"{bert_info['description']}\n\n"
+                f"Test accuracy **{accuracy:.1%}** | macro-F1 **{macro_f1:.3f}**")
+    with right:
+        st.info("**Emotion model** (Extra Enhancement)\n\n"
+                "12-class BERT trained on StockEmotions emotion labels\n\n"
+                "Test accuracy **41.8%**")
 elif (user_selection == "BERT (untrained)"):
     st.write(f">NOTE: Awaiting implementation")
 #     with open("bert_ut.pkl", "rb") as f:
         # model = pickle.load(f)
 
-# Predict model the sentimetn.
+# Predict model the sentiment.
 if st.button("Predict Sentiment"):
     if (user_selection == "BERT (untrained)"):
         st.error("BERT (untrained) is not implemented yet.")
         st.stop()
 
     st.subheader("Prediction Result")
-    if (user_selection == "BERT (trained)"):
+    if user_selection in BERT_STRATEGIES:
         with st.spinner("Running BERT..."):
-            prediction, probability = bert_predict(users_prompt)
+            prediction, probability = bert_predict(users_prompt, bert_info["repo"])
             emotion_name, emotion_probability, all_emotions = emotion_predict(users_prompt)
         sentiment_name = "bullish" if prediction == 1 else "bearish"
         sentiment_probability = probability if prediction == 1 else 1 - probability
 
-        # Two big tiles: sentiment and emotion, each with its confidence
-        # green for bullish, red for bearish
+        # 2 Title metrics for sentiment and emotion
         left, right = st.columns(2)
         left.metric("Sentiment", sentiment_name.upper(), f"{sentiment_probability:.0%} confidence",
                     delta_color="normal" if prediction == 1 else "inverse")
