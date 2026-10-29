@@ -471,3 +471,9 @@ Probability: 0.9924553632736206
 Accuracy: 0.775
 Model: BERT - Strategy 3 (mixed)
 
+> Prompt: e.g. Arizone Ice Tea Company share record profits...
+Prediction: 1
+Probability: 0.6930670724238791
+Accuracy: 0.707
+Model: Logistic Regression
+

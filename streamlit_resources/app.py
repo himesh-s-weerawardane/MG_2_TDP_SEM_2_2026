@@ -7,6 +7,26 @@ import emoji
 import pandas as pd
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from huggingface_hub import hf_hub_download
+
+# ML Models
+ML_REPO_ID = "himeshsw/ml_models_training_C"
+ML_MODELS = {
+    "Logistic Regression": ("lr_C.pkl", "lr_vectorizer_C.pkl", 0.707),
+    "SVM": ("svm_C.pkl", "svm_vectorizer_C.pkl", 0.709),
+    "Naive Bayes (Multinomial)": ("nb_C.pkl", "nb_vectorizer_C.pkl", 0.637),
+}
+
+# Function  to load the ML models and keep in memory
+@st.cache_resource
+def load_ml_model(model_file, vectorizer_file):
+    model_path = hf_hub_download(repo_id=ML_REPO_ID, filename=model_file)
+    vectorizer_path = hf_hub_download(repo_id=ML_REPO_ID, filename=vectorizer_file)
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
+    with open(vectorizer_path, "rb") as f:
+        vectorizer = pickle.load(f)
+    return model, vectorizer
 
 # BERT models (from seed 42) published on the Hugging Face
 BERT_STRATEGIES = {
@@ -89,24 +109,9 @@ user_selection = st.radio("Choose your model",
 st.write(user_selection)
 
 # Match the User Selection
-if (user_selection == "Logistic Regression"):
-    with open("pkls/models/lr_C.pkl", "rb") as f:
-        model = pickle.load(f)
-    with open("pkls/vectorizer/lr_vectorizer_C.pkl", "rb") as f:
-        vectorizer = pickle.load(f)
-    accuracy = 0.707
-elif (user_selection == "SVM"):
-    with open("pkls/models/svm_C.pkl", "rb") as f:
-        model = pickle.load(f)
-    with open("pkls/vectorizer/svm_vectorizer_C.pkl", "rb") as f:
-        vectorizer = pickle.load(f)
-    accuracy = 0.709
-elif (user_selection == "Naive Bayes (Multinomial)"):
-    with open("pkls/models/nb_C.pkl", "rb") as f:
-        model = pickle.load(f)
-    with open("pkls/vectorizer/nb_vectorizer_C.pkl", "rb") as f:
-        vectorizer = pickle.load(f)
-    accuracy = 0.637
+if user_selection in ML_MODELS:
+    model_file, vectorizer_file, accuracy = ML_MODELS[user_selection]
+    model, vectorizer = load_ml_model(model_file, vectorizer_file)
 elif user_selection in BERT_STRATEGIES:
     bert_info = BERT_STRATEGIES[user_selection]
     accuracy = bert_info["accuracy"]
@@ -121,17 +126,9 @@ elif user_selection in BERT_STRATEGIES:
         st.info("**Emotion model** (Extra Enhancement)\n\n"
                 "12-class BERT trained on StockEmotions emotion labels\n\n"
                 "Test accuracy **41.8%**")
-elif (user_selection == "BERT (untrained)"):
-    st.write(f">NOTE: Awaiting implementation")
-#     with open("bert_ut.pkl", "rb") as f:
-        # model = pickle.load(f)
 
 # Predict model the sentiment.
 if st.button("Predict Sentiment"):
-    if (user_selection == "BERT (untrained)"):
-        st.error("BERT (untrained) is not implemented yet.")
-        st.stop()
-
     st.subheader("Prediction Result")
     if user_selection in BERT_STRATEGIES:
         with st.spinner("Running BERT..."):
@@ -174,8 +171,6 @@ if st.button("Predict Sentiment"):
         f.write(f"Probability: {probability}\n")
         f.write(f"Accuracy: {accuracy}\n")
         f.write(f"Model: {user_selection}\n\n")
-
-
 
 # Findings - BERT training strategies compared on the StockEmotions test set.
 st.divider()
