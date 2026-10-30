@@ -12,7 +12,7 @@ from huggingface_hub import hf_hub_download
 # ML Models
 ML_REPO_ID = "himeshsw/ml_models_training_C"
 ML_MODELS = {
-    "Logistic Regression": ("lr_C.pkl", "lr_vectorizer_C.pkl", 0.707),
+    "Logistic Regression": ("lr_C.pkl", "lr_vectorizer_C.pkl", 0.698),
     "SVM": ("svm_C.pkl", "svm_vectorizer_C.pkl", 0.709),
     "Naive Bayes (Multinomial)": ("nb_C.pkl", "nb_vectorizer_C.pkl", 0.637),
 }
@@ -103,9 +103,9 @@ users_prompt = st.text_input("Please enter your Prompt", "e.g. Arizone Ice Tea C
 st.text(users_prompt)
 
 # Model Selection
-st.write("Logistic Regression, SVM and Naive Bayes are traidtional Machine Learnign Models. BERT is a transformer model.")
+st.write("Logistic Regression, SVM and Naive Bayes are traditional Machine Learnign Models. BERT is a transformer model.")
 user_selection = st.radio("Choose your model",
-                          ["Logistic Regression", "SVM", "Naive Bayes (Multinomial)"] + list(BERT_STRATEGIES) + ["BERT (untrained)"])
+                          ["Logistic Regression", "SVM", "Naive Bayes (Multinomial)"] + list(BERT_STRATEGIES))
 st.write(user_selection)
 
 # Match the User Selection

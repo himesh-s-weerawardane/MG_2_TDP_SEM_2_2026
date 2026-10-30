@@ -24,31 +24,6 @@ def nb_function(train_dataset, test_dataset, model_variant):
     model.fit(x_train, y_train)
     y_pred = model.predict(x_test)
 
-    # # Fine tuning
-    # import numpy as np
-    # from sklearn.model_selection import GridSearchCV
-    
-    # param_grid = {
-    #     'alpha': np.logspace(-3, 1, 9),   # 0.001 to 10
-    #     'fit_prior': [True, False],
-    # }
-
-    # clf = GridSearchCV(
-    #     MultinomialNB(),
-    #     param_grid=param_grid,
-    #     cv=3,
-    #     scoring='accuracy',
-    #     n_jobs=-1,
-    # )
-    # clf.fit(x_train, y_train)
-
-    # model = clf.best_estimator_
-    # y_pred = model.predict(x_test)
-    # with open("fine_tuning.txt", "a") as f:
-    #     f.write(f"Naive Bayes Data for model {model_variant}\n")
-    #     f.write(f"best params: {clf.best_params_}\n")
-    #     f.write(f"best score: {clf.best_score_}\n\n")
-
     # Save the model and vectorizer for frontend.
     with open(f"pkls/vectorizer/nb_vectorizer_{model_variant}.pkl", "wb") as f:
         pickle.dump(vectorizer, f)

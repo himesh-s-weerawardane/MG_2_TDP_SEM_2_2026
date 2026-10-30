@@ -1,9 +1,9 @@
 Logisitic Regression Data for model A
-Accuracy: 0.567
-Precision: 0.5772151898734177
-Recall: 0.8216216216216217
-F1-score: 0.6780669144981413
-Confusion matrix data: [[111, 334], [99, 456]]
+Accuracy: 0.569
+Precision: 0.5914454277286135
+Recall: 0.7225225225225225
+F1-score: 0.6504460665044607
+Confusion matrix data: [[168, 277], [154, 401]]
 
 Naive Bayes Data for model A
 Accuracy: 0.564
@@ -20,11 +20,11 @@ F1-score: 0.6566455696202531
 Confusion matrix data: [[151, 294], [140, 415]]
 
 Logisitic Regression Data for model B
-Accuracy: 0.719
-Precision: 0.7245901639344262
-Recall: 0.7963963963963964
-F1-score: 0.7587982832618025
-Confusion matrix data: [[277, 168], [113, 442]]
+Accuracy: 0.711
+Precision: 0.7277397260273972
+Recall: 0.7657657657657657
+F1-score: 0.746268656716418
+Confusion matrix data: [[286, 159], [130, 425]]
 
 Naive Bayes Data for model B
 Accuracy: 0.671
@@ -41,11 +41,11 @@ F1-score: 0.7538726333907056
 Confusion matrix data: [[276, 169], [117, 438]]
 
 Logisitic Regression Data for model C
-Accuracy: 0.707
-Precision: 0.7147540983606557
-Recall: 0.7855855855855856
-F1-score: 0.7484978540772532
-Confusion matrix data: [[271, 174], [119, 436]]
+Accuracy: 0.698
+Precision: 0.7169811320754716
+Recall: 0.7531531531531531
+F1-score: 0.7346221441124781
+Confusion matrix data: [[280, 165], [137, 418]]
 
 Naive Bayes Data for model C
 Accuracy: 0.637
