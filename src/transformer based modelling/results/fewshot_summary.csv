@@ -1,0 +1,9 @@
+start,n_train,mean,std
+fresh_bert,100,0.47,0.085
+fresh_bert,300,0.592,0.015
+fresh_bert,1000,0.643,0.023
+fresh_bert,3000,0.741,0.016
+general_model,100,0.598,0.004
+general_model,300,0.619,0.009
+general_model,1000,0.678,0.008
+general_model,3000,0.736,0.007
