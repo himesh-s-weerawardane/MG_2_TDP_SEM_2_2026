@@ -1,0 +1,7 @@
+,accuracy,accuracy,macro_f1,macro_f1,bearish_recall,bearish_recall,minutes,minutes
+,mean,std,mean,std,mean,std,mean,std
+strategy,,,,,,,,
+A_general_only,0.601,0.006,0.582,0.007,0.431,0.012,8.977,0.506
+S1_domain_only,0.787,0.006,0.786,0.006,0.788,0.01,3.46,0.213
+S2_sequential,0.786,0.008,0.784,0.008,0.778,0.043,13.057,1.637
+S3_mixed,0.782,0.007,0.781,0.006,0.801,0.012,10.487,0.609
