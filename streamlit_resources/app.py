@@ -99,7 +99,7 @@ st.title("Domain-Adaptive Sentiment & Public Opinion Analysis Demo")
 st.write("Enter a prompt to predict its sentiment.")
 
 # User Input Collection
-users_prompt = st.text_input("Please enter your Prompt", "e.g. Arizone Ice Tea Company share record profits...")
+users_prompt = st.text_input("Please enter your Prompt", "$AAPL record profits 🚀 this is it")
 st.text(users_prompt)
 
 # Model Selection
