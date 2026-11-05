@@ -1,0 +1,12 @@
+model,trained_on,macro_f1
+Always bullish,nothing,0.357
+"TF-IDF + LR
+finance only","8,000 finance posts",0.711
+"BERT
+finance only","8,000 finance posts",0.7857325901081061
+"Claude
+zero-shot",nothing,0.8980003009496071
+"Claude
+few-shot",4 examples in prompt,0.9051620115339136
+"Claude
+structured",4 examples in prompt,0.9029907154030534
